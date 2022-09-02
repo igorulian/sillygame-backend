@@ -5,6 +5,7 @@ export const matches = []
 
 export function createMatch(match:IMatch){
     matches.push(match)
+    
 }
 
 export class Match {
