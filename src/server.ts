@@ -3,6 +3,7 @@ import cors from 'cors'
 import http from 'http'
 import { Server } from 'socket.io'
 import routes from './routes'
+import { joinMatch } from './controller'
 
 const PORT_IO = 3333
 const PORT_HTTP = 2222
@@ -25,7 +26,12 @@ app.listen(PORT_HTTP, () =>
 )
 
 io.on('connection', (socket) => {
-    console.log('connected', socket.id);
+    const {id} = socket
+    console.log('connected', socket.id)
+
+    socket.on('join', (match:string) => {
+        joinMatch(id, match)
+    })
 })
 
 export {app, io}
