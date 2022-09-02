@@ -1,8 +1,8 @@
-import { createMatch, Match, matches } from "./match";
-import { app } from "./server";
-import { IMatch } from "./@types/IMatch";
-import { v4 as uuidv4 } from 'uuid';
-import { Router } from "express";
+import { createMatch, Match, matches } from "./match"
+import { app } from "./server"
+import { IMatch } from "./@types/IMatch"
+import { v4 as uuidv4 } from 'uuid'
+import { Router } from "express"
 
 
 const routes:Router = Router()
