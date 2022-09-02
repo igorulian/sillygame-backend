@@ -17,8 +17,8 @@ export function joinMatch(playerID:string, matchID:string){
 }
 
 export function exitMatch(playerID:string){
-    // const matchesWithPlayer = matches.filter(match =>
-    //     match.players.filter(player => player.id === playerID).length > 0
-    // )
+    const matchesWithPlayer = matches.filter(match =>
+        match.players.filter(player => player.id === playerID).length > 0
+    )
     // const match = new Match()
 }

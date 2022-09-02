@@ -1,4 +1,4 @@
-import { createMatch, Match } from "./match";
+import { createMatch, Match, matches } from "./match";
 import { app } from "./server";
 import { IMatch } from "./@types/IMatch";
 import { v4 as uuidv4 } from 'uuid';
@@ -33,6 +33,15 @@ routes.get('/match/:id', (req, res) => {
     }catch(error){
         console.log(error)
         return res.status(400).send({message: 'Não foi buscar a partida'})
+    }
+})
+
+routes.get('/matches', (req, res) => {
+    try{
+        return res.status(200).send(matches)
+    }catch(error){
+        console.log(error)
+        return res.status(400).send({message: 'Não foi listar as partidas'})
     }
 })
 

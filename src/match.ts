@@ -40,11 +40,13 @@ export class Match {
 
     getPlayers(){
         const match = this.getMatchFromArray()
+        if(!match) return
         return match.players
     }
 
     addPlayer(player:IPlayer){
         const match = this.getMatchFromArray()
+        if(!match) return
         match.players.push(player)
         this.updateClass()
     }
