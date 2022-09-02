@@ -1,0 +1,8 @@
+{
+  "name": "sillygame-backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/igorulian/sillygame-backend.git",
+  "author": "Igor <igorulian@outlook.com>",
+  "license": "MIT"
+}
