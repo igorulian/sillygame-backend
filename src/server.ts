@@ -2,12 +2,17 @@ import express from 'express'
 import cors from 'cors'
 import http from 'http'
 import { Server } from 'socket.io'
+import routes from './routes'
 
 const PORT_IO = 3333
 const PORT_HTTP = 2222
 
 const app = express()
+
+app.use(express.json())
 app.use(cors())
+app.use('/api', routes)
+
 const server = http.createServer(app);
 const io = new Server(server)
 
