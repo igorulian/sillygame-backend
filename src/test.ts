@@ -22,4 +22,6 @@ export function test(){
     console.log('3',matches[0])
     match.disconnectPlayer(playerID)
     console.log('4',matches[0])
+    match.destroy()
+    console.log('5',matches)
 }
