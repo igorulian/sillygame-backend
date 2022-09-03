@@ -7,11 +7,16 @@ import { Router } from "express"
 
 const routes:Router = Router()
 
+const MAX = 30
+
 routes.post('/match', (req,res) => {
     try{
+        const {name, size, max} = req.body
         const match:IMatch = {
+            max: max ? (max <= MAX ? max : 30 ) : 10,
+            name: name || 'placeholder',
             id: uuidv4(),
-            size: req.body.size || 30,
+            size: size || 30,
             players: []
         }
         createMatch(match)
