@@ -28,25 +28,41 @@ app.listen(PORT_HTTP, () => {
 }
 )
 
+interface IMatchID {
+    matchID: string
+}
+
+interface IMove {
+    matchID: string,
+    x: number,
+    y: number
+}
+
 io.on('connection', (socket) => {
     const playerID = socket.id
     console.log('connected', playerID)
 
 
-    socket.on('join', (matchID:string) => {
+    socket.on('join', ({matchID}:IMatchID, callback) => {
         const match = new Match(matchID)
         match.connectPlayer(playerID)
+        callback({match})
+        socket.emit(`update-${matchID}`, {match})
+        console.log('player', playerID, 'conectou na partida', matchID)
     })
 
-    socket.on('exit', (matchID:string) => {
+    socket.on('exit', ({matchID}:IMatchID) => {
         const match = new Match(matchID)
         match.disconnectPlayer(playerID)
+        socket.emit(`update-${matchID}`, {match})
     })
 
     // make it better (safer) later
-    socket.on('move', (matchID:string, x:number, y:number) => {
+    socket.on('move', ({matchID, x, y}:IMove, callback) => {
         const match = new Match(matchID)
         match.changePlayerPosition(playerID, x, y)
+        callback({match})
+        socket.emit(`update-${matchID}`, {match})
     })
 })
 

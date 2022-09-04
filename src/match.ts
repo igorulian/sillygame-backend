@@ -69,6 +69,7 @@ export class Match {
             y: getRandomPlayerPosition()
         }
         this.addPlayer(player)
+        this.updateClass()
     }
 
     disconnectPlayer(playerID: string){
@@ -97,6 +98,6 @@ export class Match {
         }else{
             return console.log('[Match - changePlayerPosition] - Jogador não encontrado')
         }
-        
+        this.updateClass()
     }
 }
