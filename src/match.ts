@@ -65,8 +65,8 @@ export class Match {
     connectPlayer(playerID: string){
         const player:IPlayer = { 
             id: playerID,
-            x: getRandomPlayerPosition(),
-            y: getRandomPlayerPosition()
+            x: getRandomPlayerPosition(1, this.size),
+            y: getRandomPlayerPosition(1, this.size)
         }
         this.addPlayer(player)
         this.updateClass()

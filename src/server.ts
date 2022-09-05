@@ -24,7 +24,7 @@ server.listen(PORT_IO, () =>
 
 app.listen(PORT_HTTP, () => {
     console.log(`Http ouvindo na porta ${PORT_HTTP}`)
-    test()
+    // test()
 }
 )
 
