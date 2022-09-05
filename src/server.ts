@@ -62,7 +62,6 @@ io.on('connection', (socket) => {
         const match = new Match(matchID)
         match.changePlayerPosition(playerID, x, y)
         callback({match})
-        console.log(`update-${matchID}`)
         socket.broadcast.emit(`update-${matchID}`, {match})
     })
 })
