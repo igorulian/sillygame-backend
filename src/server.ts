@@ -47,14 +47,14 @@ io.on('connection', (socket) => {
         const match = new Match(matchID)
         match.connectPlayer(playerID)
         callback({match})
-        socket.emit(`update-${matchID}`, {match})
+        socket.broadcast.emit(`update-${matchID}`, {match})
         console.log('player', playerID, 'conectou na partida', matchID)
     })
 
     socket.on('exit', ({matchID}:IMatchID) => {
         const match = new Match(matchID)
         match.disconnectPlayer(playerID)
-        socket.emit(`update-${matchID}`, {match})
+        socket.broadcast.emit(`update-${matchID}`, {match})
     })
 
     // make it better (safer) later
@@ -62,7 +62,8 @@ io.on('connection', (socket) => {
         const match = new Match(matchID)
         match.changePlayerPosition(playerID, x, y)
         callback({match})
-        socket.emit(`update-${matchID}`, {match})
+        console.log(`update-${matchID}`)
+        socket.broadcast.emit(`update-${matchID}`, {match})
     })
 })
 
